@@ -10,7 +10,7 @@ class ProductModel {
 
 class ProductHomeModel {
   List<Banners> ListOfBanners = [];
-  List<Products> ListOfProducts = [];
+  List<Products>? ListOfProducts = [];
 
   ProductHomeModel.FromJason(Map<String, dynamic>? Jason) {
     Jason!['banners']!.forEach((elemnt) {
@@ -18,7 +18,7 @@ class ProductHomeModel {
     });
 
     Jason!['products']?.forEach((elemnt) {
-      ListOfProducts.add(Products.FromJason(elemnt));
+      ListOfProducts?.add(Products.FromJason(elemnt));
 
     });
   }

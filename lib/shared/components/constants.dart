@@ -11,12 +11,14 @@ const String Profile = "profile";
 const String LogOut ="logout";
 const String updateprofile="update-profile";
 
+
 //
 
 String? IsToken="";
 bool? IsBoarding;
 Widget? BaseScreen;
 ShopLoginModel? LoginModel;
+ bool Islogin=false;
 ThemeData DarkTheme = ThemeData(
 
     iconTheme: IconThemeData(

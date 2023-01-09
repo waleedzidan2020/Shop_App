@@ -17,23 +17,24 @@ class ShopHomeScreen extends StatelessWidget {
   //   this.User = Index;
   // }
 
-
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopLayoutCubit, ShopStates>(
         builder: (context, state) {
           var cubit = ShopLayoutCubit.get(context);
-
+          if (Islogin == true) {
+            cubit.GetProfile();
+            cubit.GetDataProduct();
+            cubit.GetFavorites();
+            Islogin = false;
+          }
           return Scaffold(
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: cubit.ListOfBottomItem,
               onTap: (index) {
                 cubit.ChangeBottomNaviate(index);
-                if (index == 0)
-                  cubit.GetDataProduct();
-                else if (index == 3) cubit.GetProfile();
+
               },
               currentIndex: cubit.CurrentIndex,
             ),
@@ -47,9 +48,7 @@ class ShopHomeScreen extends StatelessWidget {
               ),
               actions: [
                 TextButton(
-                  onPressed: () {
-
-                  },
+                  onPressed: () {},
                   child: Text(
                     "LogOut",
                     style: TextStyle(

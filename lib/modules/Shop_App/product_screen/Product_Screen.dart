@@ -17,7 +17,7 @@ class ProductScreen extends StatelessWidget {
         var cubit = ShopLayoutCubit.get(context);
 
         return ConditionalBuilder(
-          condition: state is DataSuccessState ,
+          condition:cubit.Productmodel?.data!.ListOfProducts!.length != null ||state is DataSuccessState ,
           builder: (context) =>
               BuilderWidget(cubit.Productmodel, cubit.CategoryModel, context),
           fallback: (context) => Center(
@@ -82,9 +82,9 @@ class ProductScreen extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               children: List.generate(
-                  Model!.data!.ListOfProducts.length,
+                  Model!.data!.ListOfProducts!.length,
                   (index) =>
-                      BuildProduct(Model.data!.ListOfProducts[index], context)),
+                      BuildProduct(Model.data!.ListOfProducts![index], context)),
               shrinkWrap: true,
               childAspectRatio: 1 / 2,
               crossAxisSpacing: 8.0,

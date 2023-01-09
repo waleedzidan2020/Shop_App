@@ -42,8 +42,11 @@ class ShopLayoutCubit extends Cubit<ShopStates> {
   ];
   List<BottomNavigationBarItem> ListOfBottomItem = [
     BottomNavigationBarItem(
+
+
       icon: Icon(Icons.production_quantity_limits),
       label: "Products",
+
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.category),
@@ -105,7 +108,7 @@ class ShopLayoutCubit extends Cubit<ShopStates> {
     emit(DataLoadingState());
     DioHelper.GetData(url: Home, token: IsToken).then((value) {
       Productmodel = ProductModel.FromJason(value.data);
-      Productmodel!.data!.ListOfProducts.forEach((element) {
+      Productmodel!.data!.ListOfProducts?.forEach((element) {
         Favorite.addAll({element.id: element.Infavorites});
       });
 

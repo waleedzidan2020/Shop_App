@@ -173,14 +173,17 @@ class ShopLogInScreen extends StatelessWidget {
             if (state.LoginModel!.status == true) {
               CacheHelper.SaveData("token", state.LoginModel?.data?.token)
                   .then((value) {
+
+                NaviatAndPush(context, ShopHomeScreen());
                 print(value);
               });
 
 
 
               IsToken = state.LoginModel?.data?.token;
+              Islogin=true;
 
-              NaviatAndPush(context, ShopHomeScreen());
+
               // Fluttertoast.showToast(
               //     msg: '${state.LoginModel!.message}',
               //     toastLength: Toast.LENGTH_SHORT,
